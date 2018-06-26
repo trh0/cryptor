@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/controlsfx-8.40.14.jar" sourcepath="lib/controlsfx-8.40.14-sources.jar"/>
+	<classpathentry kind="lib" path="lib/jfoenix-8.0.4.jar"/>
+	<classpathentry kind="lib" path="lib/l4j2/log4j-api-2.11.0.jar"/>
+	<classpathentry kind="lib" path="lib/l4j2/log4j-core-2.11.0.jar"/>
+	<classpathentry kind="lib" path="lib/reactfx-2.0-20160418.172951-54.jar"/>
+	<classpathentry kind="lib" path="lib/bcpg-jdk15on-159.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/Cryptor/lib/bcpg-jdk15on-159.zip!/bcpg-jdk15on-159/javadoc"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/bcprov-jdk15on-159.jar" sourcepath="C:/Users/trh0/.m2/repository/org/bouncycastle/bcprov-jdk15on/1.59/bcprov-jdk15on-1.59-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:platform:/resource/Cryptor/lib/bcprov-jdk15on-159.zip!/bcprov-jdk15on-159/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jpgpj-0.4.jar" sourcepath="lib/jpgpj-0.4-sources.jar"/>
+	<classpathentry kind="lib" path="lib/gson-2.8.5.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

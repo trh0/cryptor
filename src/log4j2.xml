@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="error"
+	packages="de.rbb.tkoll.cryptor">
+	<Appenders>
+		<LogInterceptor name="LogInterceptor" minlevel="all" writeLogfile="true"
+			appendConsole="true">
+			<PatternLayout pattern="%d %p [%t] %C{3.} %m %exception{full} %n" />
+		</LogInterceptor>
+	</Appenders>
+	<Loggers>
+		<Root level="trace">
+			<AppenderRef ref="LogInterceptor" />
+		</Root>
+	</Loggers>
+</Configuration>

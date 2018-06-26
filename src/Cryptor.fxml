@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<fx:root alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="480.0" minWidth="640.0" type="GridPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+  <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="50.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="150.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="300.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints maxHeight="40.0" valignment="TOP" vgrow="ALWAYS" />
+    <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="1.7976931348623157E308" minHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="50.0" minHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <MenuBar fx:id="menuBar" maxHeight="40.0" maxWidth="1.7976931348623157E308" minHeight="40.0" minWidth="95.0" prefHeight="40.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+        <menus>
+          <Menu fx:id="menuApp" mnemonicParsing="false" text="%menu.app">
+               <items>
+                  <MenuItem fx:id="menuItemSettings" mnemonicParsing="false" onAction="#showSettings" text="%menu.app.settings">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="P" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuItemDebug" mnemonicParsing="false" onAction="#toggleDebug" text="%menu.app.debug">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="D" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem fx:id="menuItemClose" mnemonicParsing="false" onAction="#close" text="%menu.app.close">
+                     <accelerator>
+                        <KeyCodeCombination alt="ANY" code="X" control="ANY" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+               </items></Menu>
+        </menus>
+      </MenuBar>
+      <ToolBar fx:id="toolbar" maxHeight="40.0" maxWidth="1.7976931348623157E308" minWidth="40.0" prefHeight="40.0" prefWidth="450.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+         <items>
+            <JFXCheckBox fx:id="cbAutoCrypt" selected="true" text="%cb.autocrypt">
+               <tooltip>
+                  <Tooltip text="%tooltip.autocrypt" />
+               </tooltip>
+            </JFXCheckBox>
+            <JFXRadioButton fx:id="rbAutoEncrypt" selected="true" text="%rb.enc">
+               <tooltip>
+                  <Tooltip text="%tooltip.autocrypt" />
+               </tooltip>
+               <toggleGroup>
+                  <ToggleGroup fx:id="gra" />
+               </toggleGroup>
+            </JFXRadioButton>
+            <JFXRadioButton fx:id="rbAutoDecrypt" text="%rb.dec" toggleGroup="$gra">
+               <tooltip>
+                  <Tooltip text="%tooltip.autocrypt" />
+               </tooltip>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </JFXRadioButton>
+            <JFXCheckBox fx:id="cbClipboard" text="%cb.autoclipboard">
+               <tooltip>
+                  <Tooltip text="%tooltip.clipboard" />
+               </tooltip>
+               <padding>
+                  <Insets right="5.0" />
+               </padding>
+            </JFXCheckBox>
+         </items>
+      </ToolBar>
+      <AnchorPane fx:id="anchorPaneProperties" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowSpan="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+      </AnchorPane>
+      <JFXTextArea fx:id="textInput" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="%prompt.inputtext" style="-fx-background-color: radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 100.0%, rgb(230,230,230) 0.0, rgb(200,200,200) 100.0 );" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <effect>
+            <DropShadow color="#2b4cad1e" height="5.0" radius="2.0" spread="0.5" width="5.0" />
+         </effect>
+         <tooltip>
+            <Tooltip text="%tooltip.textarea" />
+         </tooltip>
+      </JFXTextArea>
+      <JFXTextArea fx:id="textOutput" editable="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="%prompt.inputtext" style="-fx-background-color: radial-gradient( focus-angle 0.0deg, focus-distance 0.0%, center 50.0% 50.0%, radius 100.0%, rgb(230,230,230) 0.0, rgb(200,200,200) 100.0 );" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <effect>
+            <DropShadow color="#2b4cad1e" height="5.0" radius="2.0" spread="0.5" width="5.0" />
+         </effect>
+         <tooltip>
+            <Tooltip text="%tooltip.textarea" />
+         </tooltip>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </JFXTextArea>
+      <HBox fx:id="hboxToolbar" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.columnSpan="2147483647" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="3" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+         <GridPane.margin>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </GridPane.margin>
+         <children>
+            <JFXButton fx:id="btnEncrypt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#encrypt" text="%btn.encrypt" HBox.hgrow="ALWAYS">
+               <tooltip>
+                  <Tooltip text="%tooltip.btn.encrypt" />
+               </tooltip>
+            </JFXButton>
+            <JFXButton fx:id="btnDecrypt" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#decrypt" text="%btn.decrypt" HBox.hgrow="ALWAYS">
+               <tooltip>
+                  <Tooltip text="%tooltip.btn.decrypt" />
+               </tooltip>
+            </JFXButton>
+            <JFXButton fx:id="btnLoadContent" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onAction="#loadContent" text="%btn.extload" HBox.hgrow="ALWAYS">
+               <tooltip>
+                  <Tooltip text="%tooltip.btn.loadexternalcontent" />
+               </tooltip>
+            </JFXButton>
+            <JFXComboBox fx:id="comboAlgo" maxWidth="1.7976931348623157E308" promptText="%prop.algo.choose" HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+   </children>
+</fx:root>

@@ -1,0 +1,10 @@
+/**/*.class
+/**/.settings
+/**/target
+/**/build
+/**/bin
+/**/dmp
+/**/HashCryptUtil.java
+/**/*.zip
+/**/aufg/*
+/**/beg-crypto-examples/*

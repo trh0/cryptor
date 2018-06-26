@@ -1,0 +1,319 @@
+[
+	{
+		"name": "SHA",
+		"properties": [
+			{
+				"key": "prop.algo.variant",
+				"name": "Typ",
+				"description": "Variante des SHA-Algorithmus wählen",
+				"type": "choice",
+				"defaultValues": [
+					"SHA1",
+					"SHA256",
+					"SHA512"
+				]
+			},
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,}\\;?)",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.SHACryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.SHACryptor"
+			}
+		]
+	},
+	{
+		"name": "MD",
+		"properties": [
+			{
+				"key": "prop.algo.variant",
+				"name": "Typ",
+				"description": "Variante des MD-Algorithmus wählen",
+				"type": "choice",
+				"defaultValues": [
+					"MD2",
+					"MD5"
+				]
+			},
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,}\\;?)",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.MDCryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.MDCryptor"
+			}
+		]
+	},
+	{
+		"name": "AES",
+		"properties": [
+			{
+				"key": "prop.algo.variant",
+				"name": "Typ",
+				"description": "Variante des SHA-Algorithmus wählen",
+				"type": "choice",
+				"defaultValues": [
+					"AES128"
+				]
+			},
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.AESCryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.AESCryptor"
+			},
+			{
+				"key": "prop.algo.aes.key",
+				"name": "AES Secret",
+				"description": "Der Schlüssel, mit dem Ver- und Entschlüsselt werden soll",
+				"type": "text",
+				"validation": "([^\\s]){16,}",
+				"defaultValues": [
+					""
+				]
+			}
+		]
+	},
+	{
+		"name": "Threefish",
+		"properties": [
+			{
+				"key": "prop.algo.variant",
+				"name": "Typ",
+				"description": "Variante des SHA-Algorithmus wählen",
+				"type": "choice",
+				"defaultValues": [
+					"Threefish-256",
+					"Threefish-512",
+					"Threefish-1024"
+				]
+			},
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.ThreefishCryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.ThreefishCryptor"
+			},
+			{
+				"key": "prop.algo.threefish.key",
+				"name": "Threefish Secret",
+				"description": "Der Schlüssel, mit dem Ver- und Entschlüsselt werden soll",
+				"type": "text",
+				"validation": "([^\\s]){16,}",
+				"defaultValues": [
+					""
+				]
+			}
+		]
+	},
+	{
+		"name": "PGP",
+		"properties": [
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.PGPCryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.PGPCryptor"
+			},
+			{
+				"key": "prop.algo.pgp.password",
+				"name": "Private Key Secret",
+				"description": "Das Passwort für den angegebenen Private Key",
+				"type": "text",
+				"defaultValues": [
+					""
+				]
+			},
+			{
+				"key": "prop.algo.pgp.publickeys",
+				"name": "Public Keys",
+				"description": "Die für den Verschlüsselungsvorgang zu berücksichtigenden Public Keys",
+				"type": "filelist",
+				"defaultValues": [
+					""
+				]
+			}
+		]
+	},
+	{
+		"name": "Caesar",
+		"properties": [
+			{
+				"key": "prop.algo.input",
+				"name": "Eingabeart",
+				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.output",
+				"name": "Ausgabeart",
+				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"type": "choice",
+				"defaultValues": [
+					"raw",
+					"hex",
+					"Base64"
+				]
+			},
+			{
+				"key": "prop.algo.impl.class",
+				"name": "Klasse",
+				"description": "Vollständiger Klassenname für die Implementation",
+				"type": "text",
+				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
+				"defaultValues": [
+					"de.rbb.tkoll.cryptor.crypt.CaesarCryptor"
+				],
+				"value": "de.rbb.tkoll.cryptor.crypt.CaesarCryptor"
+			},
+			{
+				"key": "prop.algo.caesar.shift",
+				"name": "Verschiebung",
+				"description": "Die für den Algorithmus zu verwendende Zeichenverschiebung.",
+				"type": "text",
+				"validation": "^[+-]?[0-9]+",
+				"defaultValues": [
+					"1"
+				]
+			}
+		]
+	}
+]
