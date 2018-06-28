@@ -8,3 +8,6 @@
 /**/*.zip
 /**/aufg/*
 /**/beg-crypto-examples/*
+
+/doc/*
+/dump/*

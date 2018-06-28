@@ -5,7 +5,7 @@
 			{
 				"key": "prop.algo.variant",
 				"name": "Typ",
-				"description": "Variante des SHA-Algorithmus wählen",
+				"description": "Variante des SHA-Algorithmus w\u00e4hlen",
 				"type": "choice",
 				"defaultValues": [
 					"SHA1",
@@ -16,7 +16,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -27,7 +27,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -38,7 +38,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,}\\;?)",
 				"defaultValues": [
@@ -54,7 +54,7 @@
 			{
 				"key": "prop.algo.variant",
 				"name": "Typ",
-				"description": "Variante des MD-Algorithmus wählen",
+				"description": "Variante des MD-Algorithmus w\u00e4hlen",
 				"type": "choice",
 				"defaultValues": [
 					"MD2",
@@ -64,7 +64,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -75,7 +75,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -86,7 +86,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,}\\;?)",
 				"defaultValues": [
@@ -102,7 +102,7 @@
 			{
 				"key": "prop.algo.variant",
 				"name": "Typ",
-				"description": "Variante des SHA-Algorithmus wählen",
+				"description": "Variante des SHA-Algorithmus w\u00e4hlen",
 				"type": "choice",
 				"defaultValues": [
 					"AES128"
@@ -111,7 +111,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -122,7 +122,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -133,7 +133,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
 				"defaultValues": [
@@ -144,7 +144,7 @@
 			{
 				"key": "prop.algo.aes.key",
 				"name": "AES Secret",
-				"description": "Der Schlüssel, mit dem Ver- und Entschlüsselt werden soll",
+				"description": "Der Schl\u00fcssel, mit dem Ver- und EntSchl\u00fcsselt werden soll",
 				"type": "text",
 				"validation": "([^\\s]){16,}",
 				"defaultValues": [
@@ -159,7 +159,7 @@
 			{
 				"key": "prop.algo.variant",
 				"name": "Typ",
-				"description": "Variante des SHA-Algorithmus wählen",
+				"description": "Variante des SHA-Algorithmus w\u00e4hlen",
 				"type": "choice",
 				"defaultValues": [
 					"Threefish-256",
@@ -170,7 +170,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -181,7 +181,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -192,7 +192,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
 				"defaultValues": [
@@ -203,9 +203,9 @@
 			{
 				"key": "prop.algo.threefish.key",
 				"name": "Threefish Secret",
-				"description": "Der Schlüssel, mit dem Ver- und Entschlüsselt werden soll",
+				"description": "Der Schl\u00fcssel, mit dem Ver- und EntSchl\u00fcsselt werden soll",
 				"type": "text",
-				"validation": "([^\\s]){16,}",
+				"validation": "([^\\s]){16,32}",
 				"defaultValues": [
 					""
 				]
@@ -218,7 +218,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -229,7 +229,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -240,7 +240,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
 				"defaultValues": [
@@ -249,9 +249,18 @@
 				"value": "de.rbb.tkoll.cryptor.crypt.PGPCryptor"
 			},
 			{
+				"key": "prop.algo.pgp.privatekey",
+				"name": "Private Key",
+				"description": "Der f\u00fcr den Verschl\u00fcsselungsvorgang zu verwendende PGP Private Keys",
+				"type": "file",
+				"defaultValues": [
+					""
+				]
+			},
+			{
 				"key": "prop.algo.pgp.password",
-				"name": "Private Key Secret",
-				"description": "Das Passwort für den angegebenen Private Key",
+				"name": "Passwort Private Key",
+				"description": "Das Passwort f\u00fcr den angegebenen Private Key",
 				"type": "text",
 				"defaultValues": [
 					""
@@ -260,7 +269,7 @@
 			{
 				"key": "prop.algo.pgp.publickeys",
 				"name": "Public Keys",
-				"description": "Die für den Verschlüsselungsvorgang zu berücksichtigenden Public Keys",
+				"description": "Die f\u00fcr den Verschl\u00fcsselungsvorgang zu ber\u00fccksichtigenden Public Keys",
 				"type": "filelist",
 				"defaultValues": [
 					""
@@ -274,7 +283,7 @@
 			{
 				"key": "prop.algo.input",
 				"name": "Eingabeart",
-				"description": "Art der Eingabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Eingabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -285,7 +294,7 @@
 			{
 				"key": "prop.algo.output",
 				"name": "Ausgabeart",
-				"description": "Art der Ausgabe wählen, zBsp. Base64 enkodiert.",
+				"description": "Art der Ausgabe w\u00e4hlen, zBsp. Base64 enkodiert.",
 				"type": "choice",
 				"defaultValues": [
 					"raw",
@@ -296,7 +305,7 @@
 			{
 				"key": "prop.algo.impl.class",
 				"name": "Klasse",
-				"description": "Vollständiger Klassenname für die Implementation",
+				"description": "Vollst\u00e4ndiger Klassenname f\u00fcr die Implementation",
 				"type": "text",
 				"validation": "([A-Za-z0-9]{1,}\\.)+([A-Za-z0-9]{1,})",
 				"defaultValues": [
@@ -307,7 +316,7 @@
 			{
 				"key": "prop.algo.caesar.shift",
 				"name": "Verschiebung",
-				"description": "Die für den Algorithmus zu verwendende Zeichenverschiebung.",
+				"description": "Die f\u00fcr den Algorithmus zu verwendende Zeichenverschiebung.",
 				"type": "text",
 				"validation": "^[+-]?[0-9]+",
 				"defaultValues": [

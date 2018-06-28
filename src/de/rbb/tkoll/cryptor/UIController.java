@@ -1,7 +1,11 @@
 package de.rbb.tkoll.cryptor;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.StandardOpenOption;
 import java.time.Duration;
 import java.util.List;
 import java.util.Optional;
@@ -33,10 +37,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
+import javafx.scene.control.DialogPane;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToolBar;
 import javafx.scene.control.Tooltip;
@@ -45,20 +51,30 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class UIController extends GridPane {
 
-  private final Logger             logger = LogManager.getLogger(getClass());
+  private final Logger logger = LogManager.getLogger(getClass());
+
+  public void bundle(ResourceBundle bundle) {
+    this.bundle = bundle;
+  }
+
+  public ResourceBundle bundle() {
+    return this.bundle;
+  }
 
   @FXML
-  private ResourceBundle           resources;
+  private ResourceBundle           bundle;
   @FXML
   private MenuBar                  menuBar;
   @FXML
   private Menu                     menuApp;
   @FXML
-  private MenuItem                 menuItemClose, menuItemSettings, menuItemDebug;
+  private MenuItem                 menuItemClose, menuItemSettings, menuItemDebug,
+      menuItemGenRSAKey;
   @FXML
   private ToolBar                  toolbar;
   @FXML
@@ -94,18 +110,114 @@ public class UIController extends GridPane {
      */
     dialog = new Dialog<>();
     dialog.setOnCloseRequest((value) -> dialog.close());
-    dialog.getDialogPane().getButtonTypes().addAll(ButtonType.APPLY, ButtonType.CANCEL);
+    final DialogPane dialogPane = dialog.getDialogPane();
+    dialogPane.getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+
+    menuItemGenRSAKey = new MenuItem(bundle.getString("menu.app.genkey"));
+    /**
+     * Define actions to generate a RSA key
+     */
+    menuItemGenRSAKey.setOnAction((e) -> {
+
+      JFXComboBox<Integer> combo = new JFXComboBox<>();
+      combo.setPromptText(bundle.getString("prompt.rsa.keysize"));
+      combo.getItems().addAll(RSAKeyPairGenerator.KEYSIZE_1024BIT,
+          RSAKeyPairGenerator.KEYSIZE_2048BIT, RSAKeyPairGenerator.KEYSIZE_4096BIT);
+      combo.setMaxWidth(Double.MAX_VALUE);
+      combo.setPrefWidth(250);
+      TextField keyfield = new TextField();
+      keyfield.setPromptText(bundle.getString("prompt.rsa.password"));
+
+      GenericPropertySheet.addValidator("^[^\\s]{8,}", keyfield);
+      keyfield.setMaxWidth(Double.MAX_VALUE);
+      keyfield.setPrefWidth(250);
+
+      TextField identity = new TextField();
+      identity.setPromptText(bundle.getString("prompt.rsa.identity"));
+      GenericPropertySheet.addValidator(".+", identity);
+      identity.setMaxWidth(Double.MAX_VALUE);
+      identity.setPrefWidth(250);
+
+      VBox box = new VBox();
+      box.getChildren().addAll(combo, keyfield, identity);
+      VBox.setVgrow(identity, Priority.ALWAYS);
+      VBox.setVgrow(combo, Priority.ALWAYS);
+      VBox.setVgrow(keyfield, Priority.ALWAYS);
+      dialogPane.setContent(box);
+
+      Optional<ButtonType> res = dialog.showAndWait();
+      if (res.isPresent()) {
+
+        ButtonType btn = res.get();
+        if (ButtonType.OK.equals(btn)) {
+
+          String key = keyfield.getText(), ident = identity.getText();
+          Integer keysize = combo.getSelectionModel().getSelectedItem();
+          keysize = (keysize == null) ? RSAKeyPairGenerator.KEYSIZE_2048BIT : keysize;
+          if (key != null) {
+
+            RSAKeyPairGenerator generator = new RSAKeyPairGenerator();
+            byte[] pkey = new byte[0], skey = new byte[0];
+
+            try (ByteArrayOutputStream pubos = new ByteArrayOutputStream();
+                ByteArrayOutputStream secos = new ByteArrayOutputStream();) {
+              generator.genKeyPair(pubos, secos, key.toCharArray(), keysize, ident, true);
+              pkey = pubos.toByteArray();
+              skey = secos.toByteArray();
+
+              if (pkey.length > 1 && skey.length > 1) {
+
+                FileChooser chooser = new FileChooser();
+                chooser.setTitle(bundle.getString("window.rsa.pubk.save"));
+                File file = chooser.showSaveDialog(modal);
+
+                if (file != null) {
+                  logger.info("Saving public key to file {}", file);
+                  file.delete();
+                  Files.write(file.toPath(), pkey, StandardOpenOption.CREATE,
+                      StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE,
+                      StandardOpenOption.TRUNCATE_EXISTING);
+                } else
+                  logger.warn("No fileoutput selected for generated RSA public key");
+
+                chooser.setTitle(bundle.getString("window.rsa.prvk.save"));
+                file = chooser.showSaveDialog(modal);
+
+                if (file != null) {
+                  logger.info("Saving private key to file {}", file);
+                  file.delete();
+                  Files.write(file.toPath(), skey, StandardOpenOption.CREATE,
+                      StandardOpenOption.CREATE_NEW, StandardOpenOption.WRITE,
+                      StandardOpenOption.TRUNCATE_EXISTING);
+                } else
+                  logger.warn("No fileoutput selected for generated RSA private key");
+
+              } else {
+                logger.error("Could not genreate RSA key");
+              }
+            } catch (Exception ex) {
+              logger.error("", ex);
+            }
+          }
+        }
+      }
+    });
+    menuApp.getItems().add(menuApp.getItems().size() - 2, menuItemGenRSAKey);
     /*
      * Build the ui to show logger optput
      */
     TextArea debugTextArea = new TextArea();
     debugTextArea.textProperty().bind(LogInterceptor.logProperty());
     debugTextArea.setEditable(false);
+
     modal = new Stage();
     modal.setOnCloseRequest((val) -> modal.close());
+    modal.setTitle(bundle.getString("window.title"));
+
     VBox modalVBox = new VBox();
-    JFXButton modalCloseBtn = new JFXButton(resources.getString("common.close"));
+    JFXButton modalCloseBtn = new JFXButton(bundle.getString("common.close"));
     modalCloseBtn.setOnAction((v) -> modal.close());
+    modalCloseBtn.setMaxWidth(Double.MAX_VALUE);
     modalVBox.getChildren().addAll(debugTextArea, modalCloseBtn);
     VBox.setVgrow(modalCloseBtn, Priority.ALWAYS);
     modalVBox.setAlignment(Pos.CENTER);
@@ -153,7 +265,7 @@ public class UIController extends GridPane {
        * Build PropertySheet for algorithm selection
        */
       propertySheet = new GenericPropertySheet();
-      propertySheet.setTooltip(new Tooltip(resources.getString("tooltip.properties")));
+      propertySheet.setTooltip(new Tooltip(bundle.getString("tooltip.properties")));
       anchorPaneProperties.getChildren().add(propertySheet);
       /**
        * UI Constraints
@@ -165,7 +277,7 @@ public class UIController extends GridPane {
       /**
        * Initialize algorithms available in the application.
        */
-      Gson gson = new Gson();
+      final Gson gson = new Gson();
       try (InputStream is =
           getClass().getClassLoader().getResource("algorithms.json").openStream()) {
         algorithms = FXCollections
@@ -184,7 +296,6 @@ public class UIController extends GridPane {
         return;
       }
 
-      System.out.println(algorithms.get(0).getClass());
       List<String> algos = algorithms.stream().map((m) -> m.getName()).collect(Collectors.toList());
       comboAlgo.getItems().addAll(algos);
 
@@ -202,6 +313,9 @@ public class UIController extends GridPane {
             switch (p.getType()) {
               case "filelist":
                 editorType = EditorType.FILELIST;
+                break;
+              case "file":
+                editorType = EditorType.FILE;
                 break;
               case "choice":
                 editorType = EditorType.CHOICE;
@@ -311,7 +425,49 @@ public class UIController extends GridPane {
 
   @FXML
   void loadContent(ActionEvent event) {
-    logger.debug("Opening filecontent triggered.");
+    logger.debug("Crypting filecontent triggered");
+    FileChooser fc = new FileChooser();
+
+    fc.setTitle(bundle.getString("window.cryptfile.select"));
+    File fileIn = fc.showOpenDialog(modal);
+    if (fileIn == null) {
+      return;
+    }
+
+    fc.setTitle(bundle.getString("window.cryptfile.select.out"));
+    File fileOut = fc.showSaveDialog(modal);
+    if (fileOut == null) {
+      return;
+    }
+
+    try {
+      byte[] bytesIn = Files.readAllBytes(fileIn.toPath()), bytesOut = null;
+      if (bytesIn != null && cryptor != null) {
+        Optional<?> optInfo = algorithms.stream()
+            .filter((p) -> p.getName().equals(comboAlgo.getSelectionModel().getSelectedItem()))
+            .findFirst();
+        if (optInfo.isPresent()) {
+          AlgoInfo info = (AlgoInfo) optInfo.get();
+          for (AlgoProperty p : info.getProperties()) {
+            cryptor.setProperty(p.getKey(), p.getValue());
+          }
+        }
+
+        if (rbAutoDecrypt.isSelected()) {
+          bytesOut = cryptor.execute(bytesIn, Mode.DECRYPT);
+        } else {
+          bytesOut = cryptor.execute(bytesIn, Mode.ENCRYPT);
+        }
+      }
+
+      if (bytesOut != null) {
+        fileOut.delete();
+        Files.write(fileOut.toPath(), bytesOut, StandardOpenOption.CREATE,
+            StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.WRITE);
+      }
+    } catch (Exception e) {
+      logger.error("Unable to crypt file", e);
+    }
   }
 
   @FXML
