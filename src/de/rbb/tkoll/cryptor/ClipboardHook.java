@@ -20,6 +20,7 @@ import javafx.scene.input.DataFormat;
  * @author Tobias Koll
  *
  */
+@SuppressWarnings("restriction")
 public class ClipboardHook {
 
   private static ClipboardHook instance;
